@@ -9,7 +9,7 @@ public class Main {
         System.out.println(api.getWeatherByCity("Warszawa", "standard", "pl"));
         JSONObject Warszawa_pogoda = api.getWeatherByCity("Warszawa", "standard", "pl");
         JSONObject Warszawa_pogoda_main = (JSONObject) Warszawa_pogoda.get("main");
-        System.out.println(Warszawa_pogoda.get("main"));
-        System.out.println(Warszawa_pogoda_main.get("temp"));
+        System.out.println(Warszawa_pogoda.get("name").toString());
+        System.out.println(Double.parseDouble(Warszawa_pogoda_main.get("temp").toString()));
     }
 }
