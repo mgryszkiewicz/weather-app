@@ -128,7 +128,7 @@ public class GUI {
         c.gridy = 2;
         main_menu.add(combobox_lang, c);
 
-        JLabel text_miejscowosc = new JLabel("Podaj miejscowość:");
+        JLabel text_miejscowosc = new JLabel("Podaj miejscowosc:");
         text_miejscowosc.setMaximumSize(new Dimension(700, 40));
         c.weightx = 0.5;
         c.weighty = 0;
@@ -209,7 +209,7 @@ public class GUI {
 
         //panel settings
         display_panel.setOrientation(JSplitPane.HORIZONTAL_SPLIT);
-        display_panel.setDividerLocation(370);
+        display_panel.setDividerLocation(280);
         display_panel.setResizeWeight(1.0);
         display_panel.setLeftComponent(top_panel);
         display_panel.setRightComponent(panel_settings);
@@ -217,14 +217,15 @@ public class GUI {
 
         top_panel.setLayout(new BoxLayout(top_panel, BoxLayout.PAGE_AXIS));
         top_panel.setAlignmentX(0.1f);
-        top_panel.add(showWeather_current);
-        top_panel.add(showWeather_tomorrow);
-        top_panel.add(showWeather_week);
+
         top_panel.add(locationLabel);
         top_panel.add(temperatureLabel);
 
 
         panel_settings.setLayout(new BoxLayout(panel_settings, BoxLayout.PAGE_AXIS));
+        panel_settings.add(showWeather_current);
+        panel_settings.add(showWeather_tomorrow);
+        panel_settings.add(showWeather_week);
 
         zatwierdz_button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
