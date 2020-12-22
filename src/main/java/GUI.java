@@ -26,7 +26,7 @@ public class GUI {
         ContinuousAudioDataStream loop = null;
         try
         {
-            BGM = new AudioStream(new FileInputStream("./src/main/resources/menuTheme.wav"));
+            BGM = new AudioStream(GUI.class.getResourceAsStream("/menuTheme.wav"));
 //            MD = BGM.getData();
             AudioPlayer.player.start(BGM);
 //            loop = new ContinuousAudioDataStream(MD);
@@ -242,10 +242,10 @@ public class GUI {
     }
 
     public static void main(String[] args) throws UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException, ClassNotFoundException {
-        System.setProperty(
-                "Quaqua.design","lion"
-        );
-        UIManager.setLookAndFeel("ch.randelshofer.quaqua.QuaquaLookAndFeel");
+//        System.setProperty(
+//                "Quaqua.design","lion"
+//        );
+//        UIManager.setLookAndFeel("ch.randelshofer.quaqua.QuaquaLookAndFeel");
         music();
         new GUI();
     }
