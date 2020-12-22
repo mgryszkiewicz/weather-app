@@ -42,15 +42,17 @@ public class GUI {
 
     public GUI() {
         //initialization frame
-        JFrame frame = new JFrame();//creating instance of JFrame
+        GridBagConstraints c = new GridBagConstraints();
+        final JFrame frame = new JFrame();//creating instance of JFrame
         frame.setPreferredSize(new Dimension(500, 500));
         frame.setMinimumSize(new Dimension(500, 500));
         frame.getContentPane().setLayout(new GridLayout());
 
         //initialization panels
-        JPanel main_menu = new JPanel();
-
-        JSplitPane display_panel = new JSplitPane();
+        final JPanel main_menu = new JPanel();
+       // main_menu.setLayout(new BoxLayout(main_menu, BoxLayout.PAGE_AXIS));
+        main_menu.setLayout(new GridBagLayout());
+        final JSplitPane display_panel = new JSplitPane();
         JPanel top_panel = new JPanel();
         JPanel panel_settings = new JPanel();
 
@@ -71,7 +73,12 @@ public class GUI {
 //        g2d.dispose();
 
         final JLabel titleLabel = new JLabel(new ImageIcon(input_image_title));
-        titleLabel.setBounds(10, 10, 10, 10);
+        c.weightx = 0.5;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 0;
+        c.weighty = 0.3;
+        c.gridy = 0;
+        main_menu.add(titleLabel, c);
 
         String[] units = {
                 "pl",
@@ -79,13 +86,23 @@ public class GUI {
         };
 
         JComboBox combobox_units= new JComboBox(units);
+        Dimension size_combo_units = combobox_units.getPreferredSize();
+        combobox_units.setMaximumSize(new Dimension(400, 50));
         combobox_units.setEditable(false);
-        combobox_units.setSelectedIndex(1);
+        combobox_units.setSelectedIndex(0);
         combobox_units.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Api api = new Api("0e082e7abe9c29697bec4d3e968c1e96");
             }
         });
+        c.weightx = 0.5;
+        c.weighty = 0.02;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 0;
+        c.gridy = 1;
+        main_menu.add(combobox_units, c);
+
+
 
         //Combobox languages
         String[] languages = {
@@ -95,19 +112,57 @@ public class GUI {
 
         };
         JComboBox combobox_lang = new JComboBox(languages);
+       // combobox_lang.setAlignmentX(Component.CENTER_ALIGNMENT);
+        combobox_lang.setMaximumSize(new Dimension(400, 50));
         combobox_lang.setEditable(false);
-        combobox_lang.setSelectedIndex(1);
+        combobox_lang.setSelectedIndex(0);
         combobox_lang.setBounds(1, 1, 1, 1);
         combobox_lang.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Api api = new Api("0e082e7abe9c29697bec4d3e968c1e96");
             }
         });
+        c.weightx = 0.5;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 0;
+        c.gridy = 2;
+        main_menu.add(combobox_lang, c);
+
+        JLabel text_miejscowosc = new JLabel("Podaj miejscowość:");
+        text_miejscowosc.setMaximumSize(new Dimension(700, 40));
+        c.weightx = 0.5;
+        c.weighty = 0;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 0;
+        c.gridy = 3;
+        main_menu.add(text_miejscowosc, c);
+
+        final JTextField cityInput = new JTextField();
+        cityInput.setMaximumSize(new Dimension(400, 40));
+        cityInput.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                city = cityInput.getText();
+            }
+        });
+        c.weightx = 0.5;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 0;
+        c.gridy = 4;
+        main_menu.add(cityInput, c);
 
 
-        main_menu.add(titleLabel);
-        main_menu.add(combobox_lang);
-        main_menu.add(combobox_units);
+
+        JButton zatwierdz_button = new JButton("Zatwierdz zmiany");
+        Dimension size_zatwierdz = zatwierdz_button.getPreferredSize();
+        zatwierdz_button.setBounds(40,100, size_zatwierdz.width,size_zatwierdz.height);
+        zatwierdz_button.setAlignmentX(Component.CENTER_ALIGNMENT);
+        c.weightx = 0.5;
+        c.weighty = 0.1;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 0;
+        c.gridy = 5;
+        main_menu.add(zatwierdz_button, c);
+
 
 
         //creating compontents
@@ -145,13 +200,6 @@ public class GUI {
             }
         });
 
-        final JTextField cityInput = new JTextField();
-        cityInput.setMaximumSize(new Dimension(700, 40));
-        cityInput.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                city = cityInput.getText();
-            }
-        });
 
 
 
@@ -173,17 +221,20 @@ public class GUI {
         top_panel.add(showWeather_tomorrow);
         top_panel.add(showWeather_week);
         top_panel.add(locationLabel);
-        top_panel.add(cityInput);
         top_panel.add(temperatureLabel);
 
 
         panel_settings.setLayout(new BoxLayout(panel_settings, BoxLayout.PAGE_AXIS));
 
-
-
+        zatwierdz_button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                frame.remove (main_menu);
+                frame.add(display_panel);
+                frame.setVisible(true);
+            }
+        });
         //frame.add(display_panel);
         frame.add(main_menu);
-
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("Weather");
         frame.pack();
