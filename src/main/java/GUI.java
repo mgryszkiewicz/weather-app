@@ -16,12 +16,25 @@ public class GUI {
 
 
     public GUI() {
+        //initialization frame
         JFrame frame = new JFrame();//creating instance of JFrame
+        frame.setPreferredSize(new Dimension(500, 500));
+        frame.setMinimumSize(new Dimension(500, 500));
+        frame.getContentPane().setLayout(new GridLayout());
 
+        //initialization panels
+        JSplitPane main_panel = new JSplitPane();
+        JPanel top_panel = new JPanel();
+        JPanel panel_settings = new JPanel();
+
+        //creating compontents
         final JLabel locationLabel = new JLabel("Current location: none");
         final JLabel temperatureLabel = new JLabel("Current temperature: none");
 
         JButton showWeather_current = new JButton("Show current weather");
+        Dimension size = showWeather_current.getPreferredSize();
+        showWeather_current.setBounds(40,100, size.width,size.height);
+
         JButton showWeather_tomorrow = new JButton("Show tomorrow weather");
         JButton showWeather_week = new JButton("Show week weather");
 
@@ -49,13 +62,12 @@ public class GUI {
         });
 
 
-        //Combobox units
         String[] units = {
                 "pl",
                 "en",
         };
         JComboBox combobox_units= new JComboBox(units);
-        combobox_units.setEditable(true);
+        combobox_units.setEditable(false);
         combobox_units.setSelectedIndex(1);
         combobox_units.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -71,8 +83,9 @@ public class GUI {
 
         };
         JComboBox combobox_lang = new JComboBox(languages);
-        combobox_lang.setEditable(true);
+        combobox_lang.setEditable(false);
         combobox_lang.setSelectedIndex(1);
+        combobox_lang.setBounds(1, 1, 1, 1);
         combobox_lang.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Api api = new Api("0e082e7abe9c29697bec4d3e968c1e96");
@@ -81,20 +94,31 @@ public class GUI {
 
 
 
-        JPanel panel = new JPanel();
-        panel.setBorder(BorderFactory.createEmptyBorder(300, 300, 100, 300));
-        panel.setLayout(new GridLayout(0, 1));
-        panel.add(showWeather_current);
-        panel.add(combobox_lang);
-        panel.add(combobox_units);
-        panel.add(showWeather_tomorrow);
-        panel.add(showWeather_week);
-        panel.add(locationLabel);
-        panel.add(cityInput);
-        panel.add(temperatureLabel);
 
 
-        frame.add(panel, BorderLayout.CENTER);
+        //panel settings
+        main_panel.setOrientation(JSplitPane.VERTICAL_SPLIT);
+        main_panel.setDividerLocation(200);
+        main_panel.setTopComponent(top_panel);
+        main_panel.setBottomComponent(panel_settings);
+
+        top_panel.setLayout(new BoxLayout(top_panel, BoxLayout.PAGE_AXIS));
+        top_panel.add(showWeather_current);
+        top_panel.add(showWeather_tomorrow);
+        top_panel.add(showWeather_week);
+        top_panel.add(locationLabel);
+        top_panel.add(cityInput);
+        top_panel.add(temperatureLabel);
+
+
+
+        panel_settings.setLayout(new BoxLayout(panel_settings, BoxLayout.PAGE_AXIS));
+        panel_settings.add(combobox_lang);
+        panel_settings.add(combobox_units);
+
+
+
+        frame.add(main_panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("Weather");
         frame.pack();
