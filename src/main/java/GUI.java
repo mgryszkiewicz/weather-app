@@ -181,6 +181,20 @@ public class GUI {
         JButton showWeather_week = new JButton("Show week weather");
         Dimension size_week = showWeather_current.getPreferredSize();
         showWeather_current.setBounds(40,100, size_week.width,size_week.height);
+        showWeather_week.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Api api = new Api("0e082e7abe9c29697bec4d3e968c1e96");
+                try {
+                    JSONObject current_weather = (JSONObject) api.getWeatherByCity(city, "metric", "pl").get("daily");
+                    pressure = Double.parseDouble(current_weather.get("pressure").toString());
+                    temp = Double.parseDouble(current_weather.get("temp").toString());
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                locationLabel.setText("Current pressure: " + pressure);
+                temperatureLabel.setText("Current temperature: " + temp);
+            }
+        });
 
 
 
