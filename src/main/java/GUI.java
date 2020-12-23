@@ -14,7 +14,7 @@ import sun.audio.*;
 
 public class GUI {
     String city;
-    String location;
+    double pressure;
     double temp;
 
     public static void music() {
@@ -187,16 +187,15 @@ public class GUI {
         showWeather_current.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Api api = new Api("0e082e7abe9c29697bec4d3e968c1e96");
-               // try {
-                   // JSONObject weather = api.getWeatherByCity(city, "standard", "pl");
-                   // location = weather.get("name").toString();
-                   // JSONObject weather_main = (JSONObject) weather.get("main");
-                   // temp = Double.parseDouble(weather_main.get("temp").toString());
-               // } catch (IOException ioException) {
-               //     ioException.printStackTrace();
-                //}
-               // locationLabel.setText("Current location: " + location);
-                //temperatureLabel.setText("Current temperature: " + temp);
+                try {
+                    JSONObject current_weather = (JSONObject) api.getWeatherByCity(city, "metric", "pl").get("current");
+                    pressure = Double.parseDouble(current_weather.get("pressure").toString());
+                    temp = Double.parseDouble(current_weather.get("temp").toString());
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                locationLabel.setText("Current pressure: " + pressure);
+                temperatureLabel.setText("Current temperature: " + temp);
             }
         });
 
