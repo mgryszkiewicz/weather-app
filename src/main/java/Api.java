@@ -45,6 +45,7 @@ public class Api {
         return result;
     }
 
+
     public JSONObject getWeatherByCity(String city, String units, String lang) throws IOException {
         URL url = new URL("http://api.openweathermap.org/data/2.5/weather?q=" + city +
                 "&appid=" + apiKey);
