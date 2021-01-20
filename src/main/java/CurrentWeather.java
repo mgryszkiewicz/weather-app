@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class CurrentWeather {
-    private JPanel mainPanel;
+    public JPanel mainPanel;
     private JLabel weatherDescription;
     private JLabel weatherIcon;
     private JLabel temp;
@@ -19,19 +19,17 @@ public class CurrentWeather {
     private JLabel sunrise;
     private JLabel sunset;
 
-    static JFrame frame = new JFrame("Pogodynka");
-
     public CurrentWeather(){
 
     }
 
-    public static void main (String[] args) {
-        frame.setContentPane(new CurrentWeather().mainPanel);
-        frame.setVisible(true);
-        //spawnsize
-        frame.setPreferredSize(new Dimension(500, 500));
-        frame.setMinimumSize(new Dimension(500, 500));
-        //spawnpoint
-        frame.setLocationRelativeTo(null);
-    }
+//    public static void main (String[] args) {
+//        GUI.frame.setContentPane(new CurrentWeather().mainPanel);
+//        GUI.frame.setVisible(true);
+//        //spawnsize
+//        GUI.frame.setPreferredSize(new Dimension(500, 500));
+//        GUI.frame.setMinimumSize(new Dimension(500, 500));
+//        //spawnpoint
+//        GUI.frame.setLocationRelativeTo(null);
+//    }
 }
