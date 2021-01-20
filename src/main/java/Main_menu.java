@@ -21,12 +21,15 @@ public class Main_menu {
     public Main_menu(){
 
         BufferedImage input_image_title = null;
+        BufferedImage icon_exp = null;
         try {
             input_image_title = ImageIO.read(getClass().getResource("/titlePicture.png"));
+            icon_exp = ImageIO.read(getClass().getResource("/icons/icons8_rain_100px_2.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
         assert input_image_title != null;
+        assert icon_exp != null;
 
         //Main current weather button action listener
         mainCurrentWeatherButton.addActionListener(new ActionListener() {
