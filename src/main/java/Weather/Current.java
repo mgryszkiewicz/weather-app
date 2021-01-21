@@ -10,23 +10,23 @@ import java.util.Date;
 public class Current extends Weather
 {
     //Time
-    Date sunriseTime;
-    Date sunsetTime;
+    public Date sunriseTime;
+    public Date sunsetTime;
 
     //Temperature in selected Units(K, C, F)
-    double temperature;
-    double perceptibleTemperature;
+    public double temperature;
+    public double perceptibleTemperature;
 
     //Average visibility in metres (distance)
-    int visibility;
+    public int visibility;
 
     //Rain
-    boolean isRaining;
-    double rain; //Rain volume for last hour, mm
+    public boolean isRaining;
+    public double rain; //Rain volume for last hour, mm
 
     //Snow
-    boolean isSnowing;
-    double snow; //Rain volume for last hour, mm
+    public boolean isSnowing;
+    public double snow; //Rain volume for last hour, mm
 
     public Current()
     {

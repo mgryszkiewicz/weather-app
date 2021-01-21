@@ -9,10 +9,10 @@ public class WeatherInfo
 {
 
     //Weather
-    String icoId;
-    String main; //Group of weather parameters
-    int weatherId; //Weather condition id
-    String description; //Weather condition within the group
+    public String icoId;
+    public String main; //Group of weather parameters
+    public int weatherId; //Weather condition id
+    public String description; //Weather condition within the group
 
 
     public WeatherInfo()

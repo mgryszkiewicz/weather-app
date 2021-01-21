@@ -9,30 +9,30 @@ import java.util.Date;
 public abstract class Weather
 {
     //Time
-    Date currentTime;
+    public Date currentTime;
 
     //Description and Ico Id
-    WeatherInfo weatherInfo;
+    public WeatherInfo weatherInfo;
 
     //Temperature in selected Units(K, C, F)
-    double dewTemperature; //Temperatura ponizej ktorej tworzy sie rosa
+    public double dewTemperature; //Temperatura ponizej ktorej tworzy sie rosa
 
     //Preassure in hP
-    int pressure;
+    public int pressure;
 
     //Cloud
-    int cloudiness; //Cloudiness in %
+    public int cloudiness; //Cloudiness in %
 
-    int humidity; //Humidity in %
+    public int humidity; //Humidity in %
 
     //UV index
-    double uvIndex;
+    public double uvIndex;
 
 
     //Wind speed in selected Units (default: metre/sec, metric: metre/sec, imperial: miles/hou)
-    double windSpeed;
-    double windGust;
-    int windDeg; //Wind direction, degrees
+    public double windSpeed;
+    public double windGust;
+    public int windDeg; //Wind direction, degrees
 
     public Weather()
     {

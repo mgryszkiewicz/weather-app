@@ -7,32 +7,32 @@ import java.util.Date;
 public class Day extends Weather
 {
     //Time
-    Date sunriseTime;
-    Date sunsetTime;
+    public Date sunriseTime;
+    public Date sunsetTime;
 
     //Temperature in selected Units(K, C, F)
-    double temperatureMorn;
-    double temperatureDay;
-    double temperatureEve;
-    double temperatureNight;
-    double temperatureMin;
-    double temperatureMax;
+    public double temperatureMorn;
+    public double temperatureDay;
+    public double temperatureEve;
+    public double temperatureNight;
+    public double temperatureMin;
+    public double temperatureMax;
 
-    double perceptibleTemperatureMorn;
-    double perceptibleTemperatureDay;
-    double perceptibleTemperatureEve;
-    double perceptibleTemperatureNight;
+    public double perceptibleTemperatureMorn;
+    public double perceptibleTemperatureDay;
+    public double perceptibleTemperatureEve;
+    public double perceptibleTemperatureNight;
 
     //Probability of precipitation
-    double probabilityPercipitation;
+    public double probabilityPercipitation;
 
     //Rain
-    boolean isRaining;
-    double rain; //Rain volume for day, mm
+    public boolean isRaining;
+    public double rain; //Rain volume for day, mm
 
     //Snow
-    boolean isSnowing;
-    double snow; //Rain volume for day, mm
+    public boolean isSnowing;
+    public double snow; //Rain volume for day, mm
 
     public Day()
     {
