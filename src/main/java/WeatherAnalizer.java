@@ -21,11 +21,11 @@ public class WeatherAnalizer
 
     private Api api;
 
-    Current currentWeather;
-    Hour[] hoursWeather;
-    int nbOfHour;
-    Day[] daysWeather;
-    int nbOfDay;
+    public Current currentWeather;
+    public Hour[] hoursWeather;
+    public int nbOfHour;
+    public Day[] daysWeather;
+    public int nbOfDay;
 
     public WeatherAnalizer()
     {
