@@ -3,8 +3,8 @@ import java.awt.*;
 
 public class CurrentWeather {
     public JPanel mainPanel;
-    private JLabel weatherDescription;
-    private JLabel weatherIcon;
+    private JLabel weather_desc;
+    private JLabel weather_icon;
     private JLabel temp;
     private JLabel feels_like;
     private JLabel pressure;

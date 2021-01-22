@@ -41,7 +41,9 @@ public class Main_menu {
         //Main hourly weather button action listener
         mainHourlyWeatherButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                GUI.frame.setContentPane(new Main_menu().mainPanel);
+                Frame frameCurrentWeather = new Frame();
+                frameCurrentWeather.splitPanel.setRightComponent(new HourlyWeather().contentPanel);
+                GUI.frame.setContentPane(frameCurrentWeather.mainPanel);
                 GUI.frame.setVisible(true);
             }
         });
@@ -49,7 +51,9 @@ public class Main_menu {
         //Main daily weather button action listener
         mainDailyWeatherButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                GUI.frame.setContentPane(new Main_menu().mainPanel);
+                Frame frameCurrentWeather = new Frame();
+                frameCurrentWeather.splitPanel.setRightComponent(new DailyWeather().mainPanel);
+                GUI.frame.setContentPane(frameCurrentWeather.mainPanel);
                 GUI.frame.setVisible(true);
             }
         });
