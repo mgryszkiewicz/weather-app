@@ -49,8 +49,8 @@ public class GUI {
         music();
         new GUI();
         frame.setContentPane(new Main_menu().mainPanel);
-        frame.setPreferredSize(new Dimension(500, 500));
-        frame.setMinimumSize(new Dimension(500, 500));
+        frame.setPreferredSize(new Dimension(660, 520));
+        frame.setMinimumSize(new Dimension(660, 520));
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
