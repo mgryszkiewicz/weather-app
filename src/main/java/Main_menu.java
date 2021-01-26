@@ -14,7 +14,7 @@ public class Main_menu{
     private JPanel upperMainPanel;
     private JPanel lowerMainPanel;
     private JButton mainMusicButton;
-    public static String language = "pl";
+    public static String language = "en";
     public static boolean isMusic = true;
 
     public Main_menu(){
