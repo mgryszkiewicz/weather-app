@@ -1,10 +1,14 @@
 import org.json.simple.JSONObject;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -123,7 +127,31 @@ public class Frame {
             GUI.hourlyWeather.panels[i].snow.setText(Double.toString(GUI.weatherAnalizer.hoursWeather[i].snow));
             GUI.hourlyWeather.panels[i].time.setText(format.format(GUI.weatherAnalizer.hoursWeather[i].currentTime));
             GUI.hourlyWeather.panels[i].weather_desc.setText(GUI.weatherAnalizer.hoursWeather[i].weatherInfo.description);
-            GUI.hourlyWeather.panels[i].weather_icon.setText(String.valueOf(GUI.weatherAnalizer.hoursWeather[i].weatherInfo.weatherId));
+            URL url = null;
+            try {
+                url = new URL("http://openweathermap.org/img/wn/" + GUI.weatherAnalizer.hoursWeather[i].weatherInfo.icoId.replace("n", "d") + "@2x.png");
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+            try {
+                GUI.hourlyWeather.panels[i].weather_icon.setIcon(new ImageIcon(ImageIO.read(url)));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+//        BufferedImage titlePicture = null;
+//        URL url = null;
+//        try {
+//            url = new URL("http://openweathermap.org/img/wn/10d@2x.png");
+//        } catch (MalformedURLException e) {
+//            e.printStackTrace();
+//        }
+//        try {
+//            titlePicture = ImageIO.read(url);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        assert titlePicture != null;
+//        GUI.hourlyWeather.panels[0].weather_icon.setIcon(new ImageIcon(titlePicture));
     }
 }
