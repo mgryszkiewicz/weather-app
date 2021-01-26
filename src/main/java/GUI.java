@@ -18,6 +18,12 @@ public class GUI {
     double pressure;
     double temp;
     static JFrame frame = new JFrame();
+    static CurrentWeather currentWeather = new CurrentWeather();
+    static DailyWeather dailyWeather = new DailyWeather();
+    static HourlyWeather hourlyWeather = new HourlyWeather();
+    static Main_menu mainMenu = new Main_menu();
+    static WeatherAnalizer weatherAnalizer = new WeatherAnalizer();
+
 
     public static void music() {
 
@@ -45,14 +51,16 @@ public class GUI {
     public GUI() {
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
         music();
         new GUI();
-        frame.setContentPane(new Main_menu().mainPanel);
+        frame.setContentPane(mainMenu.mainPanel);
         frame.setPreferredSize(new Dimension(660, 520));
         frame.setMinimumSize(new Dimension(660, 520));
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+
 }
+

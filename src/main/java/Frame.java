@@ -8,13 +8,15 @@ import java.io.IOException;
 
 public class Frame {
     public JPanel mainPanel;
-    private JTextField city;
-    private JComboBox unit;
+    public JTextField city;
+    public  JComboBox unit;
     public JPanel rightPanel;
     private JPanel leftPanel;
     private JButton backButton;
-    private JButton applyButton;
+    public  JButton applyButton;
     public JSplitPane splitPanel;
+    public static String cityName;
+    public static String unitSelected;
 
     public Frame(){
         // przycisk Back służący do wracania do menu głównego
@@ -28,23 +30,27 @@ public class Frame {
         // przycisk Apply służący do zatwierdzenia wprowadzonych zmian i odświeżenia pogody
         applyButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
+                try {
+                    GUI.weatherAnalizer.getCurrentWeather(Frame.cityName, Frame.unitSelected, Main_menu.language);
+                    CurrentWeather.NewClass main = new CurrentWeather.NewClass();
+                    main.putTextNow();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
             }
         });
 
         // pole tekstowe służące do przyjmowania nazwy miejscowości
         city.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String cityName = city.getText();
-                System.out.println(cityName);
+                cityName = city.getText();
             }
         });
 
         // combo box służący do przyjmowania rodzaju jednostek w których ma zostać wyświetlona pogoda
         unit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String unitSelected = (String) unit.getSelectedItem();
-                System.out.println(unitSelected);
+                unitSelected = (String) unit.getSelectedItem();
             }
         });
     }

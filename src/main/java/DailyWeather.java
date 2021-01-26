@@ -19,6 +19,5 @@ public class DailyWeather{
             mainPanel.add(panel);
         }
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
-
     }
 }

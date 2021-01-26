@@ -34,8 +34,8 @@ public class Main {
 
         WeatherAnalizer weatherAnalizer = new WeatherAnalizer();
 
-        weatherAnalizer.getCurrentWeather("Warszawa", "metric", "pl");
+        weatherAnalizer.getCurrentWeather("Warsaw", "metric", "pl");
 
-        System.out.println(weatherAnalizer);
+        System.out.println(weatherAnalizer.currentWeather.rain);
     }
 }

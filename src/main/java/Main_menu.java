@@ -1,14 +1,10 @@
-import org.json.simple.JSONObject;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 
-public class Main_menu {
+public class Main_menu{
     public JPanel mainPanel;
     private JLabel titleImg;
     private JButton mainCurrentWeatherButton;
@@ -17,19 +13,10 @@ public class Main_menu {
     private JButton mainLanguageButton;
     private JPanel upperMainPanel;
     private JPanel lowerMainPanel;
+    public static String language = "pl";
+
 
     public Main_menu(){
-
-        BufferedImage input_image_title = null;
-        BufferedImage icon_exp = null;
-        try {
-            input_image_title = ImageIO.read(getClass().getResource("/titlePicture.png"));
-            icon_exp = ImageIO.read(getClass().getResource("/icons/icons8_rain_100px_2.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        assert input_image_title != null;
-        assert icon_exp != null;
 
         //Main current weather button action listener
         mainCurrentWeatherButton.addActionListener(new ActionListener() {
@@ -58,6 +45,20 @@ public class Main_menu {
                 frameCurrentWeather.splitPanel.setRightComponent(new DailyWeather().mainPanel);
                 GUI.frame.setContentPane(frameCurrentWeather.mainPanel);
                 GUI.frame.setVisible(true);
+            }
+        });
+
+        mainLanguageButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if(language.equals("en")){
+                    language = "pl";
+                    mainLanguageButton.setText("English");
+                }
+                else{
+                    language = "en";
+                    mainLanguageButton.setText("Polski");
+                }
+                System.out.println(language);
             }
         });
     }
