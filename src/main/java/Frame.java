@@ -32,8 +32,7 @@ public class Frame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     GUI.weatherAnalizer.getCurrentWeather(Frame.cityName, Frame.unitSelected, Main_menu.language);
-                    CurrentWeather.NewClass main = new CurrentWeather.NewClass();
-                    main.putTextNow();
+
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
                 }

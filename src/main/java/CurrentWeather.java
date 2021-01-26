@@ -1,8 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class CurrentWeather {
+public class CurrentWeather implements ActionListener {
     public  JPanel mainPanel;
     public  JLabel weather_desc;
     public  JLabel weather_icon;
@@ -19,11 +20,7 @@ public class CurrentWeather {
     public  JLabel snow;
     public  JLabel sunrise;
     public  JLabel sunset;
-    public static class NewClass {
-        public void putTextNow (JLabel label) {
-            clouds.setText("OK!");
-        }
-    }
+
     public CurrentWeather(){
     }
 
@@ -39,6 +36,7 @@ public class CurrentWeather {
 
     public void actionPerformed(ActionEvent e)
     {
+        if(e.getSource().equals(""))
         //weather_icon.setText(GUI.weatherAnalizer.currentWeather.weatherInfo.icoId);
         weather_desc.setText(GUI.weatherAnalizer.currentWeather.weatherInfo.description);
         temp.setText(String.valueOf(GUI.weatherAnalizer.currentWeather.temperature));
