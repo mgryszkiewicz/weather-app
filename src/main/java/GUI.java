@@ -70,9 +70,9 @@ public class GUI {
         } catch (Exception e) {
         }
         frame.setContentPane(mainMenu.mainPanel);
-        frame.setPreferredSize(new Dimension(730, 520));
-        frame.setMinimumSize(new Dimension(730, 520));
-        frame.setMaximumSize(new Dimension(730, 520));
+        frame.setPreferredSize(new Dimension(810, 520));
+        frame.setMinimumSize(new Dimension(810, 520));
+        frame.setMaximumSize(new Dimension(810, 520));
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
