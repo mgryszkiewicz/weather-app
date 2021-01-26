@@ -13,7 +13,7 @@
           <grid row="0" column="3" row-span="2" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="temp_night"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="b1036" class="javax.swing.JLabel" binding="weather_icon">
@@ -29,7 +29,7 @@
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="weather_desc"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="cf89d" class="javax.swing.JLabel" binding="temp_day">
@@ -37,7 +37,7 @@
           <grid row="0" column="2" row-span="2" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="temp_day"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="d2518" class="javax.swing.JLabel" binding="day">
@@ -45,7 +45,7 @@
           <grid row="0" column="0" row-span="2" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="day"/>
+          <text value=""/>
         </properties>
       </component>
     </children>

@@ -93,7 +93,7 @@
                   <text value="Apply"/>
                 </properties>
               </component>
-              <component id="1ce3e" class="javax.swing.JLabel">
+              <component id="1ce3e" class="javax.swing.JLabel" binding="city_name">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -101,7 +101,7 @@
                   <text value="City name:"/>
                 </properties>
               </component>
-              <component id="e49d" class="javax.swing.JLabel">
+              <component id="e49d" class="javax.swing.JLabel" binding="units_name">
                 <constraints>
                   <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>

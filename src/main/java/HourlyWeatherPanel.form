@@ -13,7 +13,7 @@
           <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="temp"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="51acf" class="javax.swing.JLabel" binding="time">
@@ -21,7 +21,7 @@
           <grid row="0" column="0" row-span="2" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="time"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="fc35c" class="javax.swing.JLabel" binding="weather_icon">
@@ -37,7 +37,7 @@
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="weather_desc"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="aa294" class="javax.swing.JLabel" binding="pressure">
@@ -45,7 +45,7 @@
           <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="pressure"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="d0931" class="javax.swing.JLabel" binding="humidity">
@@ -53,7 +53,7 @@
           <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="humidity"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="95b3f" class="javax.swing.JLabel" binding="rain">
@@ -61,7 +61,7 @@
           <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="rain"/>
+          <text value=""/>
         </properties>
       </component>
       <vspacer id="7187d">

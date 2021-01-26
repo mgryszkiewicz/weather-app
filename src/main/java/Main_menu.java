@@ -10,7 +10,7 @@ public class Main_menu{
     private JButton mainCurrentWeatherButton;
     private JButton mainDailyWeatherButton;
     private JButton mainHourlyWeatherButton;
-    private JButton mainLanguageButton;
+    public JButton mainLanguageButton;
     private JPanel upperMainPanel;
     private JPanel lowerMainPanel;
     public static String language = "pl";
@@ -53,12 +53,17 @@ public class Main_menu{
                 if(language.equals("en")){
                     language = "pl";
                     mainLanguageButton.setText("English");
+                    mainDailyWeatherButton.setText("Pogoda dzienna");
+                    mainCurrentWeatherButton.setText("Pogoda na teraz");
+                    mainHourlyWeatherButton.setText("Pogoda godzinowa");
                 }
-                else{
+                else if (language.equals("pl")){
                     language = "en";
                     mainLanguageButton.setText("Polski");
+                    mainDailyWeatherButton.setText("Daily weather");
+                    mainCurrentWeatherButton.setText("Current weather");
+                    mainHourlyWeatherButton.setText("Hourly weather");
                 }
-                System.out.println(language);
             }
         });
     }

@@ -51,9 +51,25 @@ public class GUI {
     public GUI() {
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws UnsupportedLookAndFeelException {
         music();
         new GUI();
+//        System.setProperty(
+//                "Quaqua.tabLayoutPolicy","wrap"
+//        );
+//
+//
+//        UIManager.setLookAndFeel(ch.randelshofer.quaqua.QuaquaManager.getLookAndFeel());
+        try {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            // If Nimbus is not available, you can set the GUI to another look and feel.
+        }
         frame.setContentPane(mainMenu.mainPanel);
         frame.setPreferredSize(new Dimension(660, 520));
         frame.setMinimumSize(new Dimension(660, 520));

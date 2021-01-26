@@ -17,6 +17,8 @@ public class HourlyWeather {
         scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scroll.setBounds(0,0,480,470);
+        scroll.getVerticalScrollBar().setUnitIncrement(16);
+
         contentPanel = new JPanel(null);
 //        contentPanel.setPreferredSize(new Dimension(300, 300));
         contentPanel.add(scroll);

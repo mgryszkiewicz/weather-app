@@ -21,14 +21,16 @@ public class Frame {
     private JButton backButton;
     public  JButton applyButton;
     public JSplitPane splitPanel;
+    private JLabel city_name;
+    private JLabel units_name;
     public static String cityName;
     public static String unitSelected = "metric";
 
-    public Frame(){
+    public Frame() {
         // przycisk Back służący do wracania do menu głównego
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                GUI.frame.setContentPane(new Main_menu().mainPanel);
+                GUI.frame.setContentPane(GUI.mainMenu.mainPanel);
                 GUI.frame.setVisible(true);
             }
         });
@@ -59,8 +61,34 @@ public class Frame {
         unit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 unitSelected = (String) unit.getSelectedItem();
+                if(Main_menu.language.equals("pl")){
+                    if (unitSelected.equals("metryczne")){
+                        unitSelected = "metric";
+                    }
+                    else if(unitSelected.equals("imperialne")){
+                        unitSelected = "imperial";
+                    }
+                }
             }
         });
+        if (Main_menu.language.equals("pl")) {
+            city_name.setText("Wybierz miasto");
+            units_name.setText("Wybierz jednostki");
+            applyButton.setText("Zatwierdź");
+            backButton.setText("Cofnij");
+            String[] units = { "metryczne", "imperialne" };
+            DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(units);
+            unit.setModel( model );
+
+        } else {
+            city_name.setText("Choose city");
+            units_name.setText("Choose units");
+            applyButton.setText("Apply");
+            backButton.setText("Back");
+            String[] units = { "metric", "imperial" };
+            DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(units);
+            unit.setModel( model );
+        }
     }
 
     private void updateCurrentWeather() {
@@ -76,40 +104,74 @@ public class Frame {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        GUI.currentWeather.weather_desc.setText(GUI.weatherAnalizer.currentWeather.weatherInfo.description);
-        //GUI.currentWeather.weather_icon.setIcon();
-        //public  JLabel weather_icon;
-        GUI.currentWeather.temp.setText(Double.toString(GUI.weatherAnalizer.currentWeather.temperature));
-        GUI.currentWeather.feels_like.setText(Double.toString(GUI.weatherAnalizer.currentWeather.perceptibleTemperature));
-        GUI.currentWeather.pressure.setText(Integer.toString(GUI.weatherAnalizer.currentWeather.pressure));
-        GUI.currentWeather.humidity.setText(Integer.toString(GUI.weatherAnalizer.currentWeather.humidity));
-        GUI.currentWeather.dew_point.setText(Double.toString(GUI.weatherAnalizer.currentWeather.dewTemperature));
-        GUI.currentWeather.clouds.setText(Integer.toString(GUI.weatherAnalizer.currentWeather.cloudiness));
-        GUI.currentWeather.visibility.setText(Integer.toString(GUI.weatherAnalizer.currentWeather.visibility));
-        GUI.currentWeather.wind_speed.setText(Double.toString(GUI.weatherAnalizer.currentWeather.windSpeed));
-        GUI.currentWeather.wind_deg.setText(Integer.toString(GUI.weatherAnalizer.currentWeather.windDeg));
-        GUI.currentWeather.rain.setText(Double.toString(GUI.weatherAnalizer.currentWeather.rain + GUI.weatherAnalizer.currentWeather.snow));
-        GUI.currentWeather.sunrise.setText(format.format(GUI.weatherAnalizer.currentWeather.sunriseTime));
-        GUI.currentWeather.sunset.setText(format.format(GUI.weatherAnalizer.currentWeather.sunsetTime));
+        String[] symbols = new String[]{" °C", " HPa", " %", " °", " mm", " m", " m/s"};
+        if(unitSelected.equals("metric")){
+            symbols = new String[]{" °C", " HPa", " %", " °", " mm", " m", " m/s"};
+        }
+        else if(unitSelected.equals("imperial")){
+            symbols = new String[]{" °F", " HPa", " %", " °", " mm", " m", " mph"};
+
+        }
+        if (Main_menu.language.equals("pl")) {
+
+            GUI.currentWeather.weather_desc.setText(GUI.weatherAnalizer.currentWeather.weatherInfo.description.toUpperCase());
+            //GUI.currentWeather.weather_icon.setIcon();
+            //public  JLabel weather_icon;
+            GUI.currentWeather.temp.setText("Temperatura:  " + GUI.weatherAnalizer.currentWeather.temperature + symbols[0]);
+            GUI.currentWeather.feels_like.setText("T. odczuwalna:  " + GUI.weatherAnalizer.currentWeather.perceptibleTemperature+ symbols[0]);
+            GUI.currentWeather.pressure.setText("Ciśnienie:  " +Integer.toString(GUI.weatherAnalizer.currentWeather.pressure)+ symbols[1]);
+            GUI.currentWeather.humidity.setText("Wilgotność:  " +Integer.toString(GUI.weatherAnalizer.currentWeather.humidity)+ symbols[2]);
+            GUI.currentWeather.dew_point.setText("Punkt rosy:  " +Double.toString(GUI.weatherAnalizer.currentWeather.dewTemperature)+ symbols[0]);
+            GUI.currentWeather.clouds.setText("Zachmurzenie:  " +Integer.toString(GUI.weatherAnalizer.currentWeather.cloudiness)+ symbols[2]);
+            GUI.currentWeather.visibility.setText("Widoczność:  " +Integer.toString(GUI.weatherAnalizer.currentWeather.visibility)+ symbols[5]);
+            GUI.currentWeather.wind_speed.setText("Prędkość wiatru:  " +Double.toString(GUI.weatherAnalizer.currentWeather.windSpeed) + symbols[6]);
+            GUI.currentWeather.wind_deg.setText("Kierunek wiatru:  " +Integer.toString(GUI.weatherAnalizer.currentWeather.windDeg) + symbols[3]);
+            GUI.currentWeather.rain.setText("Opady:  " +Double.toString(GUI.weatherAnalizer.currentWeather.rain + GUI.weatherAnalizer.currentWeather.snow) + symbols[4]);
+            GUI.currentWeather.sunrise.setText("Wschód słońca:  " +format.format(GUI.weatherAnalizer.currentWeather.sunriseTime));
+            GUI.currentWeather.sunset.setText("Zachód słońca:  " +format.format(GUI.weatherAnalizer.currentWeather.sunsetTime));
+        }
+        else if (Main_menu.language.equals("en")) {
+
+            GUI.currentWeather.weather_desc.setText(GUI.weatherAnalizer.currentWeather.weatherInfo.description.toUpperCase());
+            //GUI.currentWeather.weather_icon.setIcon();
+            //public  JLabel weather_icon;
+            GUI.currentWeather.temp.setText("Temperature:  " + GUI.weatherAnalizer.currentWeather.temperature+ symbols[0]);
+            GUI.currentWeather.feels_like.setText("T. perceived:  " + GUI.weatherAnalizer.currentWeather.perceptibleTemperature+ symbols[0]);
+            GUI.currentWeather.pressure.setText("Pressure:  " + Integer.toString(GUI.weatherAnalizer.currentWeather.pressure)+ symbols[1]);
+            GUI.currentWeather.humidity.setText("Humidity:  " + Integer.toString(GUI.weatherAnalizer.currentWeather.humidity)+ symbols[2]);
+            GUI.currentWeather.dew_point.setText("Dew point:  " + Double.toString(GUI.weatherAnalizer.currentWeather.dewTemperature)+ symbols[0]);
+            GUI.currentWeather.clouds.setText("Cloudiness:  " + Integer.toString(GUI.weatherAnalizer.currentWeather.cloudiness)+ symbols[2]);
+            GUI.currentWeather.visibility.setText("Visibility:  " + Integer.toString(GUI.weatherAnalizer.currentWeather.visibility)+ symbols[5]);
+            GUI.currentWeather.wind_speed.setText("Wind speed:  " + Double.toString(GUI.weatherAnalizer.currentWeather.windSpeed) + symbols[6]);
+            GUI.currentWeather.wind_deg.setText("Wind degree:  " + Integer.toString(GUI.weatherAnalizer.currentWeather.windDeg)+ symbols[3]);
+            GUI.currentWeather.rain.setText("Precipitation:  " + Double.toString(GUI.weatherAnalizer.currentWeather.rain + GUI.weatherAnalizer.currentWeather.snow) + symbols[4]);
+            GUI.currentWeather.sunrise.setText("Sunrise:  " + format.format(GUI.weatherAnalizer.currentWeather.sunriseTime));
+            GUI.currentWeather.sunset.setText("Sunset:  " + format.format(GUI.weatherAnalizer.currentWeather.sunsetTime));
+        }
     }
 
     public void updateDailyWeather(){
         SimpleDateFormat format = new SimpleDateFormat("dd.MM");
         for (int i = 0; i < 7; i++) {
-            GUI.dailyWeather.panels[i].day.setText(format.format(GUI.weatherAnalizer.daysWeather[i].currentTime));
-            GUI.dailyWeather.panels[i].temp_day.setText(Double.toString(GUI.weatherAnalizer.daysWeather[i].temperatureDay));
-            GUI.dailyWeather.panels[i].weather_desc.setText(GUI.weatherAnalizer.daysWeather[i].weatherInfo.description);
-            GUI.dailyWeather.panels[i].temp_night.setText(Double.toString(GUI.weatherAnalizer.daysWeather[i].perceptibleTemperatureNight));
-            URL url = null;
-            try {
-                url = new URL("http://openweathermap.org/img/wn/" + GUI.weatherAnalizer.daysWeather[i].weatherInfo.icoId.replace("n", "d") + "@2x.png");
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
+            if (Main_menu.language.equals("pl")) {
+                GUI.dailyWeather.panels[i].day.setText(format.format(GUI.weatherAnalizer.daysWeather[i].currentTime));
+                GUI.dailyWeather.panels[i].temp_day.setText("Temperatura w dzień:  " + Double.toString(GUI.weatherAnalizer.daysWeather[i].temperatureDay));
+                GUI.dailyWeather.panels[i].weather_desc.setText(GUI.weatherAnalizer.daysWeather[i].weatherInfo.description);
+                GUI.dailyWeather.panels[i].temp_night.setText("Temperatura w nocy:  " +Double.toString(GUI.weatherAnalizer.daysWeather[i].perceptibleTemperatureNight));
+                URL url = null;
+                try {
+                    url = new URL("http://openweathermap.org/img/wn/" + GUI.weatherAnalizer.daysWeather[i].weatherInfo.icoId.replace("n", "d") + "@2x.png");
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    GUI.dailyWeather.panels[i].weather_icon.setIcon(new ImageIcon(ImageIO.read(url)));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
-            try {
-                GUI.dailyWeather.panels[i].weather_icon.setIcon(new ImageIcon(ImageIO.read(url)));
-            } catch (IOException e) {
-                e.printStackTrace();
+            else if (Main_menu.language.equals("en")) {
+
             }
         }
     }
