@@ -71,8 +71,9 @@ public class GUI {
             // If Nimbus is not available, you can set the GUI to another look and feel.
         }
         frame.setContentPane(mainMenu.mainPanel);
-        frame.setPreferredSize(new Dimension(660, 520));
-        frame.setMinimumSize(new Dimension(660, 520));
+        frame.setPreferredSize(new Dimension(730, 520));
+        frame.setMinimumSize(new Dimension(730, 520));
+        frame.setMaximumSize(new Dimension(730, 520));
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

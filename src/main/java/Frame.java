@@ -126,7 +126,7 @@ public class Frame {
             GUI.currentWeather.visibility.setText("Widoczność:  " +Integer.toString(GUI.weatherAnalizer.currentWeather.visibility)+ symbols[5]);
             GUI.currentWeather.wind_speed.setText("Prędkość wiatru:  " +Double.toString(GUI.weatherAnalizer.currentWeather.windSpeed) + symbols[6]);
             GUI.currentWeather.wind_deg.setText("Kierunek wiatru:  " +Integer.toString(GUI.weatherAnalizer.currentWeather.windDeg) + symbols[3]);
-            GUI.currentWeather.rain.setText("Opady:  " +Double.toString(GUI.weatherAnalizer.currentWeather.rain + GUI.weatherAnalizer.currentWeather.snow) + symbols[4]);
+            GUI.currentWeather.rain.setText("Opady:  " + (GUI.weatherAnalizer.currentWeather.rain + GUI.weatherAnalizer.currentWeather.snow) + symbols[4]);
             GUI.currentWeather.sunrise.setText("Wschód słońca:  " +format.format(GUI.weatherAnalizer.currentWeather.sunriseTime));
             GUI.currentWeather.sunset.setText("Zachód słońca:  " +format.format(GUI.weatherAnalizer.currentWeather.sunsetTime));
         }
