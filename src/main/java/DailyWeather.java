@@ -2,13 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 
 public class DailyWeather{
-    private JPanel panel1;;
-    private JPanel panel2;
-    private JPanel panel3;
-    private JPanel panel4;
-    private JPanel panel5;
-    private JPanel panel6;
-    private JPanel panel7;
+    public JPanel panel1 = new DailyWeatherPanel();
+    public JPanel panel2 = new DailyWeatherPanel();
+    public JPanel panel3 = new DailyWeatherPanel();
+    public JPanel panel4 = new DailyWeatherPanel();
+    public JPanel panel5 = new DailyWeatherPanel();
+    public JPanel panel6 = new DailyWeatherPanel();
+    public JPanel panel7 = new DailyWeatherPanel();
     public JPanel mainPanel;
 
     public DailyWeather() {

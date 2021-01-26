@@ -14,6 +14,6 @@ public class HourlyWeatherPanel{
     public JPanel mainPanel;
 
     public HourlyWeatherPanel() {
-        mainPanel.setPreferredSize(new Dimension(300, 1000));
+        mainPanel.setPreferredSize(new Dimension(300, 100));
     }
 }

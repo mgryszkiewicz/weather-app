@@ -1,9 +1,11 @@
 import javax.swing.*;
-import java.awt.*;
 
 public class HourlyWeather {
     public JPanel mainPanel;
     public JPanel contentPanel;
+    public HourlyWeatherPanel[] panels = new HourlyWeatherPanel[]{new HourlyWeatherPanel(), new HourlyWeatherPanel(), new HourlyWeatherPanel(),
+            new HourlyWeatherPanel(), new HourlyWeatherPanel(), new HourlyWeatherPanel(), new HourlyWeatherPanel(), new HourlyWeatherPanel()};
+
 
     public HourlyWeather() {
         mainPanel = new JPanel();
@@ -19,8 +21,7 @@ public class HourlyWeather {
         contentPanel.add(scroll);
 
         for (int i = 0; i < 8; i ++) {
-            JPanel panel = new HourlyWeatherPanel().mainPanel;
-            mainPanel.add(panel);
+            mainPanel.add(panels[i].mainPanel);
         }
     }
 }

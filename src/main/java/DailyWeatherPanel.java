@@ -10,8 +10,8 @@ public class DailyWeatherPanel extends JPanel{
 
     public DailyWeatherPanel() {
     }
-    public void actionPerformed(ActionEvent e)
-    {
-        temp_day.setText(String.valueOf(GUI.weatherAnalizer.daysWeather[0].temperatureDay));
-    }
+//    public void actionPerformed(ActionEvent e)
+//    {
+//        temp_day.setText(String.valueOf(GUI.weatherAnalizer.daysWeather[0].temperatureDay));
+//    }
 }
