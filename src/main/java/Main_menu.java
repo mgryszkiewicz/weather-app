@@ -1,6 +1,6 @@
-import javax.imageio.ImageIO;
+import sun.audio.AudioPlayer;
+
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,8 +13,9 @@ public class Main_menu{
     public JButton mainLanguageButton;
     private JPanel upperMainPanel;
     private JPanel lowerMainPanel;
+    private JButton mainMusicButton;
     public static String language = "pl";
-
+    public static boolean isMusic = true;
 
     public Main_menu(){
 
@@ -47,7 +48,34 @@ public class Main_menu{
                 GUI.frame.setVisible(true);
             }
         });
+        mainMusicButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+               if (isMusic){
+                   AudioPlayer.player.stop(GUI.BGM);
+                   isMusic = false;
+                   if(Main_menu.language.equals("en"))
+                   {
+                       mainMusicButton.setText("Music on");
 
+                   }
+                    else if (Main_menu.language.equals("pl")){
+                       mainMusicButton.setText("Włącz muzykę");
+                   }
+                }
+               else{
+                   AudioPlayer.player.start(GUI.BGM);
+                   isMusic = true;
+                   if(Main_menu.language.equals("en"))
+                   {
+                       mainMusicButton.setText("Music off");
+
+                   }
+                   else if (Main_menu.language.equals("pl")){
+                       mainMusicButton.setText("Wyłącz muzykę");
+                   }
+                }
+            }
+        });
         mainLanguageButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if(language.equals("en")){
@@ -56,13 +84,25 @@ public class Main_menu{
                     mainDailyWeatherButton.setText("Pogoda dzienna");
                     mainCurrentWeatherButton.setText("Pogoda na teraz");
                     mainHourlyWeatherButton.setText("Pogoda godzinowa");
-                }
+                    if(isMusic) {
+                        mainMusicButton.setText("Wyłącz muzykę");
+                    }
+                    else{
+                        mainMusicButton.setText("Włącz muzykę");
+                    }
+                    }
                 else if (language.equals("pl")){
                     language = "en";
                     mainLanguageButton.setText("Polski");
                     mainDailyWeatherButton.setText("Daily weather");
                     mainCurrentWeatherButton.setText("Current weather");
                     mainHourlyWeatherButton.setText("Hourly weather");
+                    if(isMusic) {
+                        mainMusicButton.setText("Music off");
+                    }
+                    else{
+                        mainMusicButton.setText("Music on");
+                    }
                 }
             }
         });

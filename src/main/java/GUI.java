@@ -23,28 +23,22 @@ public class GUI {
     static HourlyWeather hourlyWeather = new HourlyWeather();
     static Main_menu mainMenu = new Main_menu();
     static WeatherAnalizer weatherAnalizer = new WeatherAnalizer();
+    public static AudioStream BGM;
 
 
     public static void music() {
 
-        AudioPlayer MGP = AudioPlayer.player;
-        AudioStream BGM;
         AudioData MD;
 
-        ContinuousAudioDataStream loop = null;
         try
         {
             BGM = new AudioStream(GUI.class.getResourceAsStream("/menuTheme.wav"));
-//            MD = BGM.getData();
             AudioPlayer.player.start(BGM);
-//            loop = new ContinuousAudioDataStream(MD);
         }
         catch(IOException e)
         {
             e.printStackTrace();
         }
-
-        MGP.start(loop);
     }
 
 
