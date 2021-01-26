@@ -78,6 +78,10 @@ public class Main_menu{
         });
         mainLanguageButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                GUI.currentWeather = new CurrentWeather();
+                GUI.dailyWeather = new DailyWeather();
+                GUI.hourlyWeather = new HourlyWeather();
+
                 if(language.equals("en")){
                     language = "pl";
                     mainLanguageButton.setText("English");

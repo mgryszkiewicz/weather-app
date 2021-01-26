@@ -93,7 +93,7 @@
             </constraints>
             <properties>
               <foreground color="-15181524"/>
-              <text value="Wycisz muzykę"/>
+              <text value="Music off"/>
             </properties>
           </component>
         </children>
