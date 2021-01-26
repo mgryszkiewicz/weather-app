@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class HourlyWeather {
     public JPanel mainPanel;
@@ -23,5 +24,9 @@ public class HourlyWeather {
         for (int i = 0; i < 8; i ++) {
             mainPanel.add(panels[i].mainPanel);
         }
+
+        float [] color = new float[] {0,0,0};
+        Color.RGBtoHSB(178,229,237, color);
+        contentPanel.setBackground(Color.getHSBColor(color[0], color[1], color[2]));
     }
 }
