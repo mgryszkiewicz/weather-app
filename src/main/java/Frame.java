@@ -65,6 +65,17 @@ public class Frame {
 
     private void updateCurrentWeather() {
         SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+        URL url = null;
+        try {
+            url = new URL("http://openweathermap.org/img/wn/" + GUI.weatherAnalizer.currentWeather.weatherInfo.icoId.replace("n", "d") + "@2x.png");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        try {
+            GUI.currentWeather.weather_icon.setIcon(new ImageIcon(ImageIO.read(url)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         GUI.currentWeather.weather_desc.setText(GUI.weatherAnalizer.currentWeather.weatherInfo.description);
         //GUI.currentWeather.weather_icon.setIcon();
         //public  JLabel weather_icon;
@@ -77,14 +88,15 @@ public class Frame {
         GUI.currentWeather.visibility.setText(Integer.toString(GUI.weatherAnalizer.currentWeather.visibility));
         GUI.currentWeather.wind_speed.setText(Double.toString(GUI.weatherAnalizer.currentWeather.windSpeed));
         GUI.currentWeather.wind_deg.setText(Integer.toString(GUI.weatherAnalizer.currentWeather.windDeg));
-        GUI.currentWeather.rain.setText(Double.toString(GUI.weatherAnalizer.currentWeather.rain));
-        GUI.currentWeather.snow.setText(Double.toString(GUI.weatherAnalizer.currentWeather.snow));
+        GUI.currentWeather.rain.setText(Double.toString(GUI.weatherAnalizer.currentWeather.rain + GUI.weatherAnalizer.currentWeather.snow));
         GUI.currentWeather.sunrise.setText(format.format(GUI.weatherAnalizer.currentWeather.sunriseTime));
         GUI.currentWeather.sunset.setText(format.format(GUI.weatherAnalizer.currentWeather.sunsetTime));
     }
 
     public void updateDailyWeather(){
+        SimpleDateFormat format = new SimpleDateFormat("dd.MM");
         for (int i = 0; i < 7; i++) {
+            GUI.dailyWeather.panels[i].day.setText(format.format(GUI.weatherAnalizer.daysWeather[i].currentTime));
             GUI.dailyWeather.panels[i].temp_day.setText(Double.toString(GUI.weatherAnalizer.daysWeather[i].temperatureDay));
             GUI.dailyWeather.panels[i].weather_desc.setText(GUI.weatherAnalizer.daysWeather[i].weatherInfo.description);
             GUI.dailyWeather.panels[i].temp_night.setText(Double.toString(GUI.weatherAnalizer.daysWeather[i].perceptibleTemperatureNight));

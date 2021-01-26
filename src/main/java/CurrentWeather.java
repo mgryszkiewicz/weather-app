@@ -22,6 +22,9 @@ public class CurrentWeather implements ActionListener {
     public  JLabel sunset;
 
     public CurrentWeather(){
+        float [] color = new float[] {0,0,0};
+        Color.RGBtoHSB(178,229,237, color);
+        mainPanel.setBackground(Color.getHSBColor(color[0], color[1], color[2]));
     }
 
 //    public static void main (String[] args) {

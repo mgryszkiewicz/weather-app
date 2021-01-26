@@ -29,12 +29,12 @@
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="weather_icon"/>
+              <text value=""/>
             </properties>
           </component>
         </children>
       </grid>
-      <grid id="6be1d" layout-manager="GridLayoutManager" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="6be1d" layout-manager="GridLayoutManager" row-count="6" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -56,14 +56,6 @@
             </constraints>
             <properties>
               <text value="pressure"/>
-            </properties>
-          </component>
-          <component id="b96f2" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Label"/>
             </properties>
           </component>
           <component id="f83a8" class="javax.swing.JLabel" binding="humidity">
@@ -114,25 +106,9 @@
               <text value="wind_deg"/>
             </properties>
           </component>
-          <component id="55b91" class="javax.swing.JLabel" binding="rain">
-            <constraints>
-              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="rain"/>
-            </properties>
-          </component>
-          <component id="b20e4" class="javax.swing.JLabel" binding="snow">
-            <constraints>
-              <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="snow"/>
-            </properties>
-          </component>
           <component id="e755a" class="javax.swing.JLabel" binding="sunrise">
             <constraints>
-              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="sunrise"/>
@@ -140,7 +116,7 @@
           </component>
           <component id="5d1ab" class="javax.swing.JLabel" binding="sunset">
             <constraints>
-              <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="sunset"/>
@@ -152,6 +128,14 @@
             </constraints>
             <properties>
               <text value="temp"/>
+            </properties>
+          </component>
+          <component id="55b91" class="javax.swing.JLabel" binding="rain">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="rain"/>
             </properties>
           </component>
         </children>
