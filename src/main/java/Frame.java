@@ -36,6 +36,7 @@ public class Frame {
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
                 }
+                GUI.currentWeather.clouds.setText(Integer.toString(GUI.weatherAnalizer.currentWeather.cloudiness));
             }
         });
 

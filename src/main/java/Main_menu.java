@@ -22,7 +22,7 @@ public class Main_menu{
         mainCurrentWeatherButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Frame frameCurrentWeather = new Frame();
-                frameCurrentWeather.splitPanel.setRightComponent(new CurrentWeather().mainPanel);
+                frameCurrentWeather.splitPanel.setRightComponent(GUI.currentWeather.mainPanel);
                 GUI.frame.setContentPane(frameCurrentWeather.mainPanel);
                 GUI.frame.setVisible(true);
             }
@@ -32,7 +32,7 @@ public class Main_menu{
         mainHourlyWeatherButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Frame frameCurrentWeather = new Frame();
-                frameCurrentWeather.splitPanel.setRightComponent(new HourlyWeather().contentPanel);
+                frameCurrentWeather.splitPanel.setRightComponent(GUI.hourlyWeather.contentPanel);
                 GUI.frame.setContentPane(frameCurrentWeather.mainPanel);
                 GUI.frame.setVisible(true);
             }
@@ -42,7 +42,7 @@ public class Main_menu{
         mainDailyWeatherButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Frame frameCurrentWeather = new Frame();
-                frameCurrentWeather.splitPanel.setRightComponent(new DailyWeather().mainPanel);
+                frameCurrentWeather.splitPanel.setRightComponent(GUI.dailyWeather.mainPanel);
                 GUI.frame.setContentPane(frameCurrentWeather.mainPanel);
                 GUI.frame.setVisible(true);
             }
