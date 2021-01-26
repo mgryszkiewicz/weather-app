@@ -1,23 +1,27 @@
 import javax.swing.*;
-import java.awt.*;
 
-public class DailyWeather{
-    public JPanel panel1 = new DailyWeatherPanel();
-    public JPanel panel2 = new DailyWeatherPanel();
-    public JPanel panel3 = new DailyWeatherPanel();
-    public JPanel panel4 = new DailyWeatherPanel();
-    public JPanel panel5 = new DailyWeatherPanel();
-    public JPanel panel6 = new DailyWeatherPanel();
-    public JPanel panel7 = new DailyWeatherPanel();
+public class DailyWeather {
     public JPanel mainPanel;
+    public JPanel contentPanel;
+    public DailyWeatherPanel[] panels = new DailyWeatherPanel[]{new DailyWeatherPanel(), new DailyWeatherPanel(), new DailyWeatherPanel(),
+            new DailyWeatherPanel(), new DailyWeatherPanel(), new DailyWeatherPanel(), new DailyWeatherPanel()};
+
 
     public DailyWeather() {
-        JPanel[] panels = new JPanel[] {panel1, panel2, panel3, panel4, panel5, panel6, panel7};
         mainPanel = new JPanel();
-        for(JPanel panel : panels) {
-            panel = new DailyWeatherPanel().mainPanel;
-            mainPanel.add(panel);
-        }
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+        mainPanel.setAutoscrolls(true);
+
+        JScrollPane scroll = new JScrollPane(mainPanel);
+        scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scroll.setBounds(0,0,480,470);
+        contentPanel = new JPanel(null);
+//        contentPanel.setPreferredSize(new Dimension(300, 300));
+        contentPanel.add(scroll);
+
+        for (int i = 0; i < 7; i ++) {
+            mainPanel.add(panels[i].mainPanel);
+        }
     }
 }

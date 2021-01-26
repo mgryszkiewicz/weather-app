@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class DailyWeatherPanel extends JPanel{
@@ -9,6 +10,7 @@ public class DailyWeatherPanel extends JPanel{
     public JPanel mainPanel;
 
     public DailyWeatherPanel() {
+//        mainPanel.setPreferredSize(new Dimension(400, 200));
     }
 //    public void actionPerformed(ActionEvent e)
 //    {

@@ -84,47 +84,32 @@ public class Frame {
     }
 
     public void updateDailyWeather(){
-//        ((JLabel) GUI.dailyWeather.panel1.getComponent(2)).setText(Double.toString(GUI.weatherAnalizer.daysWeather[0].temperatureDay));
-        ((DailyWeatherPanel)GUI.dailyWeather.panel1).temp_day.setText(Double.toString(GUI.weatherAnalizer.daysWeather[0].temperatureDay));
-        ((DailyWeatherPanel)GUI.dailyWeather.panel2).temp_day.setText(Double.toString(GUI.weatherAnalizer.daysWeather[1].temperatureDay));
-        ((DailyWeatherPanel)GUI.dailyWeather.panel3).temp_day.setText(Double.toString(GUI.weatherAnalizer.daysWeather[2].temperatureDay));
-        ((DailyWeatherPanel)GUI.dailyWeather.panel4).temp_day.setText(Double.toString(GUI.weatherAnalizer.daysWeather[3].temperatureDay));
-        ((DailyWeatherPanel)GUI.dailyWeather.panel5).temp_day.setText(Double.toString(GUI.weatherAnalizer.daysWeather[4].temperatureDay));
-        ((DailyWeatherPanel)GUI.dailyWeather.panel6).temp_day.setText(Double.toString(GUI.weatherAnalizer.daysWeather[5].temperatureDay));
-        ((DailyWeatherPanel)GUI.dailyWeather.panel7).temp_day.setText(Double.toString(GUI.weatherAnalizer.daysWeather[6].temperatureDay));
-        ((DailyWeatherPanel)GUI.dailyWeather.panel1).temp_night.setText(Double.toString(GUI.weatherAnalizer.daysWeather[0].temperatureNight));
-        ((DailyWeatherPanel)GUI.dailyWeather.panel2).temp_day.setText(Double.toString(GUI.weatherAnalizer.daysWeather[1].temperatureNight));
-        ((DailyWeatherPanel)GUI.dailyWeather.panel3).temp_day.setText(Double.toString(GUI.weatherAnalizer.daysWeather[2].temperatureNight));
-        ((DailyWeatherPanel)GUI.dailyWeather.panel4).temp_day.setText(Double.toString(GUI.weatherAnalizer.daysWeather[3].temperatureNight));
-        ((DailyWeatherPanel)GUI.dailyWeather.panel5).temp_day.setText(Double.toString(GUI.weatherAnalizer.daysWeather[4].temperatureNight));
-        ((DailyWeatherPanel)GUI.dailyWeather.panel6).temp_day.setText(Double.toString(GUI.weatherAnalizer.daysWeather[5].temperatureNight));
-        ((DailyWeatherPanel)GUI.dailyWeather.panel7).temp_day.setText(Double.toString(GUI.weatherAnalizer.daysWeather[6].temperatureNight));
-        ((DailyWeatherPanel)GUI.dailyWeather.panel1).weather_desc.setText(GUI.weatherAnalizer.daysWeather[0].weatherInfo.description);
-        ((DailyWeatherPanel)GUI.dailyWeather.panel2).weather_desc.setText(GUI.weatherAnalizer.daysWeather[1].weatherInfo.description);
-        ((DailyWeatherPanel)GUI.dailyWeather.panel3).weather_desc.setText(GUI.weatherAnalizer.daysWeather[2].weatherInfo.description);
-        ((DailyWeatherPanel)GUI.dailyWeather.panel4).weather_desc.setText(GUI.weatherAnalizer.daysWeather[3].weatherInfo.description);
-        ((DailyWeatherPanel)GUI.dailyWeather.panel5).weather_desc.setText(GUI.weatherAnalizer.daysWeather[4].weatherInfo.description);
-        ((DailyWeatherPanel)GUI.dailyWeather.panel6).weather_desc.setText(GUI.weatherAnalizer.daysWeather[5].weatherInfo.description);
-        ((DailyWeatherPanel)GUI.dailyWeather.panel7).weather_desc.setText(GUI.weatherAnalizer.daysWeather[6].weatherInfo.description);
-        ((DailyWeatherPanel)GUI.dailyWeather.panel1).weather_desc.setText(String.valueOf(GUI.weatherAnalizer.daysWeather[0].weatherInfo.weatherId));
-        ((DailyWeatherPanel)GUI.dailyWeather.panel1).weather_desc.setText(String.valueOf(GUI.weatherAnalizer.daysWeather[1].weatherInfo.weatherId));
-        ((DailyWeatherPanel)GUI.dailyWeather.panel1).weather_desc.setText(String.valueOf(GUI.weatherAnalizer.daysWeather[2].weatherInfo.weatherId));
-        ((DailyWeatherPanel)GUI.dailyWeather.panel1).weather_desc.setText(String.valueOf(GUI.weatherAnalizer.daysWeather[3].weatherInfo.weatherId));
-        ((DailyWeatherPanel)GUI.dailyWeather.panel1).weather_desc.setText(String.valueOf(GUI.weatherAnalizer.daysWeather[4].weatherInfo.weatherId));
-        ((DailyWeatherPanel)GUI.dailyWeather.panel1).weather_desc.setText(String.valueOf(GUI.weatherAnalizer.daysWeather[5].weatherInfo.weatherId));
-        ((DailyWeatherPanel)GUI.dailyWeather.panel1).weather_desc.setText(String.valueOf(GUI.weatherAnalizer.daysWeather[6].weatherInfo.weatherId));
-        GUI.dailyWeather.panel1.removeAll();
+        for (int i = 0; i < 7; i++) {
+            GUI.dailyWeather.panels[i].temp_day.setText(Double.toString(GUI.weatherAnalizer.daysWeather[i].temperatureDay));
+            GUI.dailyWeather.panels[i].weather_desc.setText(GUI.weatherAnalizer.daysWeather[i].weatherInfo.description);
+            GUI.dailyWeather.panels[i].temp_night.setText(Double.toString(GUI.weatherAnalizer.daysWeather[i].perceptibleTemperatureNight));
+            URL url = null;
+            try {
+                url = new URL("http://openweathermap.org/img/wn/" + GUI.weatherAnalizer.daysWeather[i].weatherInfo.icoId.replace("n", "d") + "@2x.png");
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+            try {
+                GUI.dailyWeather.panels[i].weather_icon.setIcon(new ImageIcon(ImageIO.read(url)));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void updateHourlyWeather(){
         SimpleDateFormat format = new SimpleDateFormat("HH:mm");
         for (int i = 0; i <= 7; i++) {
             GUI.hourlyWeather.panels[i].temp.setText(Double.toString(GUI.weatherAnalizer.hoursWeather[i].temperature));
-            GUI.hourlyWeather.panels[i].clouds.setText(Double.toString(GUI.weatherAnalizer.hoursWeather[i].cloudiness));
             GUI.hourlyWeather.panels[i].humidity.setText(Double.toString(GUI.weatherAnalizer.hoursWeather[i].humidity));
             GUI.hourlyWeather.panels[i].pressure.setText(Double.toString(GUI.weatherAnalizer.hoursWeather[i].pressure));
-            GUI.hourlyWeather.panels[i].rain.setText(Double.toString(GUI.weatherAnalizer.hoursWeather[i].rain));
-            GUI.hourlyWeather.panels[i].snow.setText(Double.toString(GUI.weatherAnalizer.hoursWeather[i].snow));
+//            GUI.hourlyWeather.panels[i].rain.setText(Double.toString(GUI.weatherAnalizer.hoursWeather[i].rain));
+            GUI.hourlyWeather.panels[i].rain.setText(Double.toString(GUI.weatherAnalizer.hoursWeather[i].snow + GUI.weatherAnalizer.hoursWeather[i].rain));
             GUI.hourlyWeather.panels[i].time.setText(format.format(GUI.weatherAnalizer.hoursWeather[i].currentTime));
             GUI.hourlyWeather.panels[i].weather_desc.setText(GUI.weatherAnalizer.hoursWeather[i].weatherInfo.description);
             URL url = null;

@@ -42,7 +42,7 @@ public class Main_menu{
         mainDailyWeatherButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Frame frameCurrentWeather = new Frame();
-                frameCurrentWeather.splitPanel.setRightComponent(GUI.dailyWeather.mainPanel);
+                frameCurrentWeather.splitPanel.setRightComponent(GUI.dailyWeather.contentPanel);
                 GUI.frame.setContentPane(frameCurrentWeather.mainPanel);
                 GUI.frame.setVisible(true);
             }
