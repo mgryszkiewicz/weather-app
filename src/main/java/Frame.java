@@ -132,6 +132,7 @@ public class Frame {
         }
         else if (Main_menu.language.equals("en")) {
 
+
             GUI.currentWeather.weather_desc.setText(GUI.weatherAnalizer.currentWeather.weatherInfo.description.toUpperCase());
             //GUI.currentWeather.weather_icon.setIcon();
             //public  JLabel weather_icon;
@@ -151,13 +152,29 @@ public class Frame {
     }
 
     public void updateDailyWeather(){
+        String[] symbols = new String[]{" °C", " HPa", " %", " °", " mm", " m", " m/s"};
+        if(unitSelected.equals("metric")){
+            symbols = new String[]{" °C", " HPa", " %", " °", " mm", " m", " m/s"};
+        }
+        else if(unitSelected.equals("imperial")){
+            symbols = new String[]{" °F", " HPa", " %", " °", " mm", " m", " mph"};
+
+        }
         SimpleDateFormat format = new SimpleDateFormat("dd.MM");
         for (int i = 0; i < 7; i++) {
             if (Main_menu.language.equals("pl")) {
                 GUI.dailyWeather.panels[i].day.setText(format.format(GUI.weatherAnalizer.daysWeather[i].currentTime));
-                GUI.dailyWeather.panels[i].temp_day.setText("Temperatura w dzień:  " + Double.toString(GUI.weatherAnalizer.daysWeather[i].temperatureDay));
-                GUI.dailyWeather.panels[i].weather_desc.setText(GUI.weatherAnalizer.daysWeather[i].weatherInfo.description);
-                GUI.dailyWeather.panels[i].temp_night.setText("Temperatura w nocy:  " +Double.toString(GUI.weatherAnalizer.daysWeather[i].perceptibleTemperatureNight));
+                GUI.dailyWeather.panels[i].temp_day.setText("Temperatura w dzień:  " + Double.toString(GUI.weatherAnalizer.daysWeather[i].temperatureDay) + symbols[0]);
+                GUI.dailyWeather.panels[i].weather_desc.setText(GUI.weatherAnalizer.daysWeather[i].weatherInfo.description.toUpperCase());
+                GUI.dailyWeather.panels[i].temp_night.setText("Temperatura w nocy:  " + Double.toString(GUI.weatherAnalizer.daysWeather[i].perceptibleTemperatureNight) + symbols[0]);
+            }
+            else if (Main_menu.language.equals("en")) {
+                GUI.dailyWeather.panels[i].day.setText(format.format(GUI.weatherAnalizer.daysWeather[i].currentTime));
+                GUI.dailyWeather.panels[i].temp_day.setText("Days temperature:  " + Double.toString(GUI.weatherAnalizer.daysWeather[i].temperatureDay) + symbols[0]);
+                GUI.dailyWeather.panels[i].weather_desc.setText(GUI.weatherAnalizer.daysWeather[i].weatherInfo.description.toUpperCase());
+                GUI.dailyWeather.panels[i].temp_night.setText("Night temperature:  " + Double.toString(GUI.weatherAnalizer.daysWeather[i].perceptibleTemperatureNight) + symbols[0]);
+            }
+
                 URL url = null;
                 try {
                     url = new URL("http://openweathermap.org/img/wn/" + GUI.weatherAnalizer.daysWeather[i].weatherInfo.icoId.replace("n", "d") + "@2x.png");
@@ -170,23 +187,41 @@ public class Frame {
                     e.printStackTrace();
                 }
             }
-            else if (Main_menu.language.equals("en")) {
 
-            }
         }
-    }
+
 
     public void updateHourlyWeather(){
+        String[] symbols = new String[]{" °C", " HPa", " %", " °", " mm", " m", " m/s"};
+        if(unitSelected.equals("metric")){
+            symbols = new String[]{" °C", " HPa", " %", " °", " mm", " m", " m/s"};
+        }
+        else if(unitSelected.equals("imperial")){
+            symbols = new String[]{" °F", " HPa", " %", " °", " mm", " m", " mph"};
+
+        }
         SimpleDateFormat format = new SimpleDateFormat("HH:mm");
         for (int i = 0; i <= 7; i++) {
-            GUI.hourlyWeather.panels[i].temp.setText(Double.toString(GUI.weatherAnalizer.hoursWeather[i].temperature));
-            GUI.hourlyWeather.panels[i].humidity.setText(Double.toString(GUI.weatherAnalizer.hoursWeather[i].humidity));
-            GUI.hourlyWeather.panels[i].pressure.setText(Double.toString(GUI.weatherAnalizer.hoursWeather[i].pressure));
+            if (Main_menu.language.equals("pl")) {
+                GUI.hourlyWeather.panels[i].temp.setText("Temperatura:  "+Double.toString(GUI.weatherAnalizer.hoursWeather[i].temperature)+ symbols[0]);
+                GUI.hourlyWeather.panels[i].humidity.setText("Wilgotność:  "+Double.toString(GUI.weatherAnalizer.hoursWeather[i].humidity)+symbols[2]);
+                GUI.hourlyWeather.panels[i].pressure.setText("Ciśnienie:  "+Double.toString(GUI.weatherAnalizer.hoursWeather[i].pressure)+symbols[1]);
 //            GUI.hourlyWeather.panels[i].rain.setText(Double.toString(GUI.weatherAnalizer.hoursWeather[i].rain));
-            GUI.hourlyWeather.panels[i].rain.setText(Double.toString(GUI.weatherAnalizer.hoursWeather[i].snow + GUI.weatherAnalizer.hoursWeather[i].rain));
-            GUI.hourlyWeather.panels[i].time.setText(format.format(GUI.weatherAnalizer.hoursWeather[i].currentTime));
-            GUI.hourlyWeather.panels[i].weather_desc.setText(GUI.weatherAnalizer.hoursWeather[i].weatherInfo.description);
-            URL url = null;
+                GUI.hourlyWeather.panels[i].rain.setText("Opady:  "+ Double.toString(GUI.weatherAnalizer.hoursWeather[i].snow + GUI.weatherAnalizer.hoursWeather[i].rain) + symbols[4]);
+                GUI.hourlyWeather.panels[i].time.setText(format.format(GUI.weatherAnalizer.hoursWeather[i].currentTime));
+                GUI.hourlyWeather.panels[i].weather_desc.setText(GUI.weatherAnalizer.hoursWeather[i].weatherInfo.description.toUpperCase());
+            }
+            else if (Main_menu.language.equals("en")) {
+                GUI.hourlyWeather.panels[i].temp.setText("Temperature:  "+Double.toString(GUI.weatherAnalizer.hoursWeather[i].temperature)+ symbols[0]);
+                GUI.hourlyWeather.panels[i].humidity.setText("Humidity:  "+Double.toString(GUI.weatherAnalizer.hoursWeather[i].humidity)+symbols[2]);
+                GUI.hourlyWeather.panels[i].pressure.setText("Pressure:  "+Double.toString(GUI.weatherAnalizer.hoursWeather[i].pressure)+symbols[1]);
+//            GUI.hourlyWeather.panels[i].rain.setText(Double.toString(GUI.weatherAnalizer.hoursWeather[i].rain));
+                GUI.hourlyWeather.panels[i].rain.setText("Precipitation:  "+ Double.toString(GUI.weatherAnalizer.hoursWeather[i].snow + GUI.weatherAnalizer.hoursWeather[i].rain) + symbols[4]);
+                GUI.hourlyWeather.panels[i].time.setText(format.format(GUI.weatherAnalizer.hoursWeather[i].currentTime));
+                GUI.hourlyWeather.panels[i].weather_desc.setText(GUI.weatherAnalizer.hoursWeather[i].weatherInfo.description.toUpperCase());
+
+            }
+                URL url = null;
             try {
                 url = new URL("http://openweathermap.org/img/wn/" + GUI.weatherAnalizer.hoursWeather[i].weatherInfo.icoId.replace("n", "d") + "@2x.png");
             } catch (MalformedURLException e) {

@@ -68,7 +68,6 @@ public class GUI {
                 }
             }
         } catch (Exception e) {
-            // If Nimbus is not available, you can set the GUI to another look and feel.
         }
         frame.setContentPane(mainMenu.mainPanel);
         frame.setPreferredSize(new Dimension(660, 520));
