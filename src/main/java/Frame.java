@@ -25,11 +25,15 @@ public class Frame {
     public JSplitPane splitPanel;
     private JLabel city_name;
     private JLabel units_name;
+    private JLabel errorText;
     public static String cityName;
     public static String unitSelected = "metric";
 
 
     public Frame() {
+
+        errorText.setVisible(false);
+
         // przycisk Back służący do wracania do menu głównego
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -43,13 +47,15 @@ public class Frame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     GUI.weatherAnalizer.getCurrentWeather(Frame.cityName, Frame.unitSelected, Main_menu.language);
-
+                    errorText.setVisible(false);
+                    updateCurrentWeather();
+                    updateDailyWeather();
+                    updateHourlyWeather();
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
+                    errorText.setVisible(true);
                 }
-                updateCurrentWeather();
-                updateDailyWeather();
-                updateHourlyWeather();
+
             }
         });
 
@@ -87,6 +93,7 @@ public class Frame {
         });
         if (Main_menu.language.equals("pl")) {
             city_name.setText("Wybierz miasto");
+            errorText.setText("Zła nazwa miasta");
             units_name.setText("Wybierz jednostki");
             applyButton.setText("Zatwierdź");
             backButton.setText("Cofnij");
@@ -96,6 +103,7 @@ public class Frame {
 
         } else {
             city_name.setText("Choose city");
+            errorText.setText("Wrong city name");
             units_name.setText("Choose units");
             applyButton.setText("Apply");
             backButton.setText("Back");
